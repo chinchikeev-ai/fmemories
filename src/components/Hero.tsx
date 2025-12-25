@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { TreeDeciduous, Bell, Scan } from "lucide-react";
+import { TreeDeciduous, Bell, Scan, Lightbulb } from "lucide-react";
 import { Button } from "./ui/button";
 import FamilyTree3D from "./FamilyTree3D";
 
@@ -23,6 +23,13 @@ const features = [
     title: "Семейный фотограф",
     description: "Невероятные возможности с фото",
     gradient: "from-gold to-gold-soft",
+    delay: 0.5,
+  },
+  {
+    icon: Lightbulb,
+    title: "Генератор идей",
+    description: "Идеи для праздников и подарков",
+    gradient: "from-indigo to-primary",
     delay: 0.6,
   },
 ];
@@ -140,7 +147,7 @@ const Hero = () => {
         </div>
 
         {/* Feature cards */}
-        <div className="mt-16 lg:mt-24 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-16 lg:mt-24 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}

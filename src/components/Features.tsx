@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { TreeDeciduous, Calendar, Camera, Sparkles, Users, Shield } from "lucide-react";
+import { TreeDeciduous, Calendar, Camera, Sparkles, Users, Shield, Lightbulb, Gift, PartyPopper } from "lucide-react";
 
 const FeaturesSection = () => {
   return (
@@ -23,7 +23,7 @@ const FeaturesSection = () => {
             Всё для вашей <span className="gradient-text-accent">семейной истории</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Три мощных инструмента, которые помогут сохранить и приумножить память о вашей семье
+            Четыре мощных инструмента, которые помогут сохранить и приумножить память о вашей семье
           </p>
         </motion.div>
 
@@ -74,6 +74,22 @@ const FeaturesSection = () => {
         >
           <AISearchVisualization />
         </FeatureBlock>
+
+        {/* Feature 4: Idea Generator */}
+        <FeatureBlock
+          align="right"
+          badge="Генератор идей"
+          badgeColor="indigo"
+          title="Генератор идей"
+          description="Находите новые идеи для вечеринок, подарков, и не только. ИИ поможет организовать любое семейное мероприятие."
+          features={[
+            { icon: Gift, text: "Идеи подарков" },
+            { icon: PartyPopper, text: "Планирование праздников" },
+            { icon: Lightbulb, text: "Креативные решения" },
+          ]}
+        >
+          <IdeaGeneratorVisualization />
+        </FeatureBlock>
       </div>
     </section>
   );
@@ -82,7 +98,7 @@ const FeaturesSection = () => {
 interface FeatureBlockProps {
   align: "left" | "right";
   badge: string;
-  badgeColor: "mint" | "pink" | "gold";
+  badgeColor: "mint" | "pink" | "gold" | "indigo";
   title: string;
   description: string;
   features: { icon: React.ElementType; text: string }[];
@@ -97,6 +113,7 @@ const FeatureBlock = ({ align, badge, badgeColor, title, description, features, 
     mint: "bg-mint/20 text-accent-foreground",
     pink: "bg-pink-soft text-secondary-foreground",
     gold: "bg-gold-soft text-foreground",
+    indigo: "bg-indigo/20 text-primary",
   };
 
   return (
@@ -369,6 +386,104 @@ const AISearchVisualization = () => {
             </motion.div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+};
+
+const IdeaGeneratorVisualization = () => {
+  const ideas = [
+    { text: "Идеи недорогих креативных подарков на день рождения друга", delay: 0.5 },
+    { text: "Помоги мне организовать большую семейную встречу у меня дома", delay: 1.0 },
+    { text: "Придумай несколько идей для веселого детского пикника", delay: 1.5 },
+  ];
+
+  return (
+    <div className="relative h-[400px] lg:h-[500px] glass-card-strong p-6 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-radial from-indigo/10 via-transparent to-transparent" />
+      
+      <div className="relative z-10 h-full flex flex-col">
+        {/* Chat interface header */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo to-primary flex items-center justify-center">
+            <Lightbulb className="w-5 h-5 text-primary-foreground" />
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Генератор идей</p>
+            <p className="text-xs text-muted-foreground">Онлайн • Готов помочь</p>
+          </div>
+        </div>
+
+        {/* Chat messages */}
+        <div className="flex-1 space-y-4 overflow-hidden">
+          {ideas.map((idea, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idea.delay }}
+              className="flex gap-3"
+            >
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-soft to-mint-soft flex-shrink-0" />
+              <div className="glass-card p-3 max-w-[80%]">
+                <p className="text-sm text-foreground">{idea.text}</p>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* AI Response */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 2 }}
+            className="flex gap-3 justify-end"
+          >
+            <div className="bg-primary/10 border border-primary/20 rounded-2xl p-3 max-w-[80%]">
+              <div className="flex items-center gap-2 mb-2">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <span className="text-xs font-medium text-primary">Генерирую идеи...</span>
+              </div>
+              <div className="space-y-2">
+                {["🎁 Фотоальбом с воспоминаниями", "🎉 Квест по дому", "🍕 Тематическая вечеринка"].map((item, j) => (
+                  <motion.p
+                    key={j}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 2.3 + j * 0.2 }}
+                    className="text-sm text-foreground"
+                  >
+                    {item}
+                  </motion.p>
+                ))}
+              </div>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo to-primary flex items-center justify-center flex-shrink-0">
+              <Lightbulb className="w-4 h-4 text-primary-foreground" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Input area */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-4 glass-card p-3 flex items-center gap-3"
+        >
+          <input
+            type="text"
+            placeholder="Спросите что угодно..."
+            className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground outline-none"
+            readOnly
+          />
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <Sparkles className="w-4 h-4 text-primary-foreground" />
+          </div>
+        </motion.div>
       </div>
     </div>
   );
