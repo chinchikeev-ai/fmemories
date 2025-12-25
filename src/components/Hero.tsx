@@ -20,8 +20,8 @@ const features = [
   },
   {
     icon: Scan,
-    title: "Поиск по фото",
-    description: "ИИ найдёт родственников по старым снимкам",
+    title: "Семейный фотограф",
+    description: "Невероятные возможности с фото",
     gradient: "from-gold to-gold-soft",
     delay: 0.6,
   },
@@ -80,9 +80,9 @@ const Hero = () => {
               </div>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-tight tracking-tight">
-                <span className="text-foreground">Твоя семья —</span>
+                <span className="gradient-text-accent">Мгновения</span>
                 <br />
-                <span className="gradient-text-accent">живая навсегда</span>
+                <span className="text-foreground">твоей жизни</span>
               </h1>
               
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">

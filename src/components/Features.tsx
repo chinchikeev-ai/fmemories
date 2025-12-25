@@ -59,16 +59,16 @@ const FeaturesSection = () => {
           <CalendarVisualization />
         </FeatureBlock>
 
-        {/* Feature 3: AI Photo Search */}
+        {/* Feature 3: Family Photographer */}
         <FeatureBlock
           align="left"
           badge="Магия ИИ"
           badgeColor="gold"
-          title="Поиск родных по фотографии"
-          description="Загрузите старое фото — искусственный интеллект найдёт возможных родственников в нашей базе данных."
+          title="Семейный фотограф"
+          description="Невероятные возможности с фото — улучшение, восстановление и оживление старых снимков с помощью ИИ."
           features={[
-            { icon: Camera, text: "Распознавание лиц" },
-            { icon: Sparkles, text: "Нейросеть последнего поколения" },
+            { icon: Camera, text: "Улучшение качества фото" },
+            { icon: Sparkles, text: "Восстановление старых снимков" },
             { icon: Shield, text: "Полная конфиденциальность" },
           ]}
         >
